@@ -1,5 +1,6 @@
 package com.example.priyalbatramachinetestminiecommapplication.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -22,15 +23,14 @@ class ProductAdapter(
         return CartViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val item = getItem(position)
         with(holder.binding) {
             tvTitle.text = item.title
-//            tvDescription.text = item.title
-//            tvQuantity.text = "Qty: ${item.quantity}"
             tvPrice.text = "₹${item.price}"
-//            btnDelete.setOnClickListener { onDeleteClick(item) }
-//            Glide.with(holder.binding.root).load(item.image).into(imageview)
+            btnDelete.setOnClickListener { onDeleteClick(item) }
+            Glide.with(holder.binding.root).load(item.image).into(imageview)
         }
     }
 
